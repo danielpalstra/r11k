@@ -1,0 +1,3 @@
+bin/*
+r10k/*
+puppetfile.yml
