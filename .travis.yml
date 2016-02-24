@@ -1,13 +1,17 @@
 language: go
 go:
   - 1.5
-git:
-  submodules: false
+
+sudo: false
+
 install:
   - go get github.com/codegangsta/cli/...
   - go get gopkg.in/yaml.v2/...
+  - go get -u github.com/jteeuwen/go-bindata/...
+
 script:
   - make build
+
 deploy:
   provider: releases
   api_key:

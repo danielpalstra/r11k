@@ -3,6 +3,7 @@ package puppetfile
 import (
 	"bytes"
 	"io/ioutil"
+	"log"
 	"os"
 
 	"path/filepath"
@@ -49,7 +50,14 @@ func WriteToFile(output string, b bytes.Buffer) error {
 func BuildPuppetFile(p Puppetfile) (b bytes.Buffer, err error) {
 	// TODO package in binary or ma
 	// https://github.com/jteeuwen/go-bindata
-	t, err := template.ParseFiles("puppetfile/Puppetfile.tpl")
+	// https://mlafeldt.github.io/blog/embedding-assets-in-go/
+	data, err := Asset("puppetfile/Puppetfile.tpl")
+	if err != nil {
+		log.Fatal("Error opening template file")
+	}
+	// t, err := template.ParseFiles("puppetfile/Puppetfile.tpl")
+	t, err := template.New("puppetfile").Parse(string(data))
+
 	t.Execute(&b, p)
 
 	return
