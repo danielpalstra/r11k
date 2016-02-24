@@ -11,8 +11,8 @@ import (
 // Run the Swarm CLI.
 func Run() {
 	app := cli.NewApp()
-	app.Name = "r10k-template"
-	app.Usage = "A r10k template util"
+	app.Name = "r11k"
+	app.Usage = "r10k Puppetfile on steroids"
 	app.Version = version.VERSION + " (" + version.GITCOMMIT + ")"
 
 	app.Author = ""
