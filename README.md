@@ -9,7 +9,7 @@ This project uses `go-bindata` to embed go templates in the binary.
 Install go-bindata by running
 
 ```shell
-  go get -u github.com/jteeuwen/go-bindata/...
+    go get -u github.com/jteeuwen/go-bindata/...
 ```
 
 Run `make` and watch the magic. Binary will be put in bin/

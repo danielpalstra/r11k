@@ -10,13 +10,18 @@ install:
   - go get -u github.com/jteeuwen/go-bindata/...
 
 script:
-  - make build
+  - GOOS=linux   GOARCH=amd64 make build
+  - GOOS=windows GOARCH=amd64 make build
+  - GOOS=darwin  GOARCH=amd64 make build
 
 deploy:
   provider: releases
   api_key:
     secure: RPaS3vkWPdtr5VDEtrd9pkxxiSsV2wnWim09B/eYDd/hYjkyk11Per99vg0z4nQLedwl4tnSp/OuBvf2Zee2yAVLLsSEhf1W2uWv5F6Bw3gRpBiOoUHdqY4b8iI01PjfMjztXFIiBUJ/cpwU63eiZ43XOLLxEb5K1x573S8fYIBeNx1Vapi1ugdsUSrHDiqnhD/IJHtZgrkfD1tPV222cVDTeZumoqmRkB/1LaAbeCSDPn9Ma6PQPg2F9IE71rFQwyIvpRQ9ZZcbuMw8UmDflYg/1C+SLDs3sU4Bpvrrp/rFMNfXKvEeNE0aLD0pw5P0MShQisTJUIHDj8meKWlnyJYX7qWKf7KKtk+eAncycwsmPDeyFWRcY2cp3SbTaAFFzGGORUWZDfschv0AkFxJx3BXX4hCn4TGmDS7bY1qjipAGif/JzG5oHM+bvJbBmJm3uXz83uwe6E04rhFGS8gIlG+cfq7LrhsRhHAE4VYWOAFew7Oglejvo7488JzS7IONofaLhGnLVsMl8VGghjhJzKfDKKbY20PxT/fVnqQRvG/cK8/U3FVdpsLzeIUTI9YHOHcP3/CFb3uE9JQ4nTjsG+hkrPX6pUesLCNg2Tzpr24Pi6EOunAxiU0NCCu/tApjrOxL7tAFr2j2gnDCT1ppDpTVCV/Jn61RXNvu6pHgUM=
-  file: bin/r11k
+  file:
+    - bin/r11k-linux-amd64
+    - bin/r11k-darwin-amd64
+    - bin/r11k-windows-amd64
   skip_cleanup: true
   on:
     tags: true
