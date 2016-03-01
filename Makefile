@@ -20,5 +20,6 @@ default: build
 
 build:
 	go generate
+	go-bindata -pkg puppetfile -o puppetfile/assets.go puppetfile/Puppetfile.tpl
 	$(GOBUILD) -o $(BIN_DIR)/$(BINARY)-$(GOOS)-$(GOARCH)
 	# env GOOS=linux GOARCH=amd64 go build ${LDFLAGS} -o bin/${BINARY}-${GOOS}-${GOARCH}
